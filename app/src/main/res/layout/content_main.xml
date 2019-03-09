@@ -10,7 +10,7 @@
     tools:showIn="@layout/app_bar_main">
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/inputUsername"
         android:layout_width="295dp"
         android:layout_height="90dp"
         android:background="@color/center"
@@ -25,7 +25,7 @@
         tools:layout_editor_absoluteY="234dp" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/inputPassword"
         android:layout_width="298dp"
         android:layout_height="99dp"
         android:background="@color/center"

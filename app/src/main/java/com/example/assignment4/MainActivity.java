@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,7 +44,9 @@ public class MainActivity extends AppCompatActivity
 
         setTitle("Log in");
 
-
+        // Take user input for login.
+        EditText inputUsername = findViewById(R.id.inputUsername);
+        EditText inputPassword = findViewById(R.id.inputPassword);
     }
 
     @Override
