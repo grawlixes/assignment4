@@ -1,8 +1,7 @@
 package com.example.assignment4;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.util.JsonReader;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,7 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
+
+import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,8 +42,35 @@ public class MainActivity extends AppCompatActivity
         setTitle("Log in");
 
         // Take user input for login.
-        EditText inputUsername = findViewById(R.id.inputUsername);
-        EditText inputPassword = findViewById(R.id.inputPassword);
+        // For my reference: http://www.cs.binghamton.edu/~pmadden/courses/cs441/mysql.pdf
+        final EditText inputUsername = findViewById(R.id.inputUsername);
+        final EditText inputPassword = findViewById(R.id.inputPassword);
+
+        final Button button = findViewById(R.id.logInButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Try to log in.
+                String username = inputUsername.getText().toString();
+                String password = inputPassword.getText().toString();
+
+                HttpURLConnection connect = null;
+                URL url;
+
+                try {
+                    url = new URL("https://cs.binghamton.edu/~kfranke1/access_mysql.php");
+                    connect = (HttpURLConnection) url
+                            .openConnection();
+
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (connect != null) {
+                        connect.disconnect();
+                    }
+                }
+            }
+        });
     }
 
     @Override

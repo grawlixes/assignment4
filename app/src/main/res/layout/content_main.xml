@@ -45,7 +45,7 @@
         app:layout_editor_absoluteY="300sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/user"
         android:layout_width="73dp"
         android:layout_height="36dp"
         android:layout_marginStart="40dp"
@@ -60,7 +60,7 @@
         tools:text="USER" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/pass"
         android:layout_width="75dp"
         android:layout_height="37dp"
         android:layout_marginStart="40dp"
@@ -88,7 +88,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logInButton"
         android:layout_width="201dp"
         android:layout_height="92dp"
         android:layout_marginStart="100dp"
