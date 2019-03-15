@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity
 
         setTitle("Log in");
 
-
         // Take user input for login.
         // For my reference: http://www.cs.binghamton.edu/~pmadden/courses/cs441/mysql.pdf
         final EditText inputUsername = findViewById(R.id.inputUsername);
@@ -64,12 +63,12 @@ public class MainActivity extends AppCompatActivity
                 if (!createMode) {
                     setTitle("Create account");
                     logInButton.setText("CREATE ACCOUNT");
-                    welcome.setText("Welcome to wackness.");
+                    welcome.setText("Join the fun.");
                     swapButton.setText("Log in");
                 } else {
                     setTitle("Log in");
                     logInButton.setText("LOG IN");
-                    welcome.setText("Do you feel wack today?");
+                    welcome.setText("Ready to play?");
                     swapButton.setText("Create account");
                 }
 
