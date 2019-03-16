@@ -20,18 +20,19 @@ the game on any wifi. I spent most of my time learning PHP and MySQL,
 as well as how to communicate between Android <-> PHP and PHP <-> SQL.
 
 Fun facts about the game:
+
     - You can see this in the code, but this was originally going to be
-a joke social media site which involved bullying people to get points.
-I still want to make this, but I didn't have time to do it for this
-project, so I'll have to do it later. I already had the PHP/MySQL
-backend finished when I made this decision, so I went with something
-else that could be played with multiple people.
+      a joke social media site which involved bullying people to get points.
+      I still want to make this, but I didn't have time to do it for this
+      project, so I'll have to do it later. I already had the PHP/MySQL
+      backend finished when I made this decision, so I went with something
+      else that could be played with multiple people.
     - You can absolutely use SQL injection (and probably several other
-web exploits) to mess with this app. Please be nice.
+      web exploits) to mess with this app. Please be nice.
     - I hosted my PHP scripts on cs.binghamton.edu/~kfranke1 - this is
-something that everybody can do. Just set up a public_html folder in
-your home directory and make sure it and everything in it have public
-access with chmod.
+      something that everybody can do. Just set up a public_html folder in
+      your home directory and make sure it and everything in it have public
+      access with chmod.
     - If you win 2147483648 or more games, nothing special will happen
-because I use longs in my app and 11-factor integers in my database, 
-but you should probably go outside.
+      because I use longs in my app and 11-factor integers in my database, 
+      but you should probably go outside.
