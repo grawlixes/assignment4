@@ -1,5 +1,6 @@
 package com.example.assignment4;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -90,65 +91,75 @@ public class MainActivity extends AppCompatActivity
                             HttpURLConnection connect = null;
                             URL url;
 
-                            if (createMode) {
-                                // Try to create account.
-                                try {
+                            try {
+                                if (createMode) {
                                     url = new URL("https://cs.binghamton.edu/~kfranke1/" +
                                             "create.php");
-                                    connect = (HttpURLConnection) url
-                                            .openConnection();
-                                    Log.d("Debug", "Start");
-                                    //connect.connect();
+                                } else {
+                                    url = new URL("https://cs.binghamton.edu/~kfranke1/" +
+                                            "login.php");
+                                }
+                                connect = (HttpURLConnection) url
+                                        .openConnection();
+                                Log.d("Debug", "Start");
 
-                                    connect.setReadTimeout(15000);
-                                    connect.setConnectTimeout(15000);
-                                    connect.setRequestMethod("POST");
-                                    connect.setDoInput(true);
-                                    connect.setDoOutput(true);
+                                connect.setReadTimeout(15000);
+                                connect.setConnectTimeout(15000);
+                                connect.setRequestMethod("POST");
+                                connect.setDoInput(true);
+                                connect.setDoOutput(true);
 
-                                    OutputStream os = connect.getOutputStream();
-                                    BufferedWriter bw = new BufferedWriter(
-                                            new OutputStreamWriter(os, "UTF-8"));
+                                OutputStream os = connect.getOutputStream();
+                                BufferedWriter bw = new BufferedWriter(
+                                        new OutputStreamWriter(os, "UTF-8"));
 
-                                    // Write arguments: we want to create a new user
-                                    // with username and password specified by user
-                                    StringBuilder arguments = new StringBuilder();
-                                    arguments.append(
-                                            URLEncoder.encode("username", "UTF-8"));
-                                    arguments.append("=");
-                                    arguments.append(
-                                            URLEncoder.encode(username, "UTF-8"));
-                                    arguments.append("&");
-                                    arguments.append(
-                                            URLEncoder.encode("password", "UTF-8"));
-                                    arguments.append("=");
-                                    arguments.append(
-                                            URLEncoder.encode(password, "UTF-8"));
-                                    bw.write(arguments.toString());
-                                    bw.flush();
-                                    bw.close();
+                                // Write arguments: we want to create a new user
+                                // with username and password specified by user
+                                // Or, if we're logging in, we want to see if the
+                                // username and password match
+                                StringBuilder arguments = new StringBuilder();
+                                arguments.append(
+                                        URLEncoder.encode("username", "UTF-8"));
+                                arguments.append("=");
+                                arguments.append(
+                                        URLEncoder.encode(username, "UTF-8"));
+                                arguments.append("&");
+                                arguments.append(
+                                        URLEncoder.encode("password", "UTF-8"));
+                                arguments.append("=");
+                                arguments.append(
+                                        URLEncoder.encode(password, "UTF-8"));
+                                bw.write(arguments.toString());
+                                bw.flush();
+                                bw.close();
 
-                                    int responseCode = connect.getResponseCode();
-                                    Log.d("Debug response: ", String.valueOf(responseCode));
+                                int responseCode = connect.getResponseCode();
+                                Log.d("Debug response: ", String.valueOf(responseCode));
 
-                                    if (responseCode == HttpsURLConnection.HTTP_OK) {
-                                        InputStream is = connect.getInputStream();
-                                        BufferedReader br = new BufferedReader(
-                                                new InputStreamReader(is, "UTF-8"));
-                                        StringBuilder msg = new StringBuilder();
-                                        String data = br.readLine();
+                                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                                    InputStream is = connect.getInputStream();
+                                    BufferedReader br = new BufferedReader(
+                                            new InputStreamReader(is, "UTF-8"));
+                                    StringBuilder msg = new StringBuilder();
+                                    String data = br.readLine();
+                                    TextView welcome = findViewById(R.id.welcome);
+
+                                    if (createMode) {
                                         while (data != null) {
                                             msg.append(data);
                                             data = br.readLine();
                                         }
                                         //Log.d("Debug response", msg.toString());
-
-                                        TextView welcome = findViewById(R.id.welcome);
-                                        Log.d("Hey", '"' + msg.toString() + '"');
                                         if (msg.toString().equals("Success")) {
                                             // Let the user move on. The php script
                                             // will take care of making the account.
-                                            welcome.setText("Account created!");
+                                            Intent intent = new Intent(
+                                                    MainActivity.this,
+                                                    GameActivity.class);
+                                            intent.putExtra("wins", "0");
+                                            intent.putExtra("losses", "0");
+                                            intent.putExtra("username", username);
+                                            startActivity(intent);
                                         } else if (msg.toString().equals("Failed")) {
                                             // Account exists already.
                                             welcome.setText("User taken.");
@@ -156,44 +167,33 @@ public class MainActivity extends AppCompatActivity
                                             // Unknown error, probably your connection.
                                             Log.e("Error (PHP)", msg.toString());
                                         }
+                                    } else {
+                                        if (data.equals("Success")) {
+                                            Intent intent = new Intent(
+                                                    MainActivity.this,
+                                                    GameActivity.class);
+                                            data = br.readLine();
+                                            intent.putExtra("wins", data);
+                                            data = br.readLine();
+                                            intent.putExtra("losses", data);
+                                            intent.putExtra("username", username);
+                                            startActivity(intent);
+                                        } else if (data.equals("Failed")) {
+                                            welcome.setText("Incorrect user or password.");
+                                        } else {
+                                            // Unknown error, probably your connection.
+                                            Log.e("Error (PHP) unknown", data);
+                                        }
                                     }
-                                } catch (Exception e) {
-                                    Log.d("Debug Exception", "message " + e);
-                                    e.printStackTrace();
-                                } finally {
-                                    if (connect != null) {
-                                        connect.disconnect();
-                                    }
-                                    Log.d("Debug Finished", "Done");
                                 }
-                            } else {
-                                // Try to log in.
-                                try {
-                                    url = new URL("https://cs.binghamton.edu/~kfranke1/" +
-                                            "login.php");
-                                    connect = (HttpURLConnection) url
-                                            .openConnection();
-                                    Log.d("Debug", "Start");
-                                    connect.connect();
-                                    InputStream is = connect.getInputStream();
-                                    BufferedReader br = new BufferedReader(
-                                            new InputStreamReader(is, "UTF-8"));
-                                    StringBuilder msg = new StringBuilder();
-                                    String data = br.readLine();
-                                    while (data != null) {
-                                        msg.append(data);
-                                        data = br.readLine();
-                                    }
-                                    Log.d("Debug", "Content " + msg);
-                                } catch (Exception e) {
-                                    Log.d("Debug Exception", "message " + e);
-                                    e.printStackTrace();
-                                } finally {
-                                    if (connect != null) {
-                                        connect.disconnect();
-                                    }
-                                    Log.d("Debug Finished", "Done");
+                            } catch (Exception e) {
+                                Log.d("Debug Exception", "message " + e);
+                                e.printStackTrace();
+                            } finally {
+                                if (connect != null) {
+                                    connect.disconnect();
                                 }
+                                Log.d("Debug Finished", "Done");
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
