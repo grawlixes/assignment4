@@ -59,7 +59,7 @@ public class GameActivity extends AppCompatActivity {
                             return;
                         }
 
-                        HttpURLConnection connect;
+                        HttpURLConnection connect = null;
                         try {
                             URL url = new URL("https://cs.binghamton.edu/~kfranke1/" +
                                     "find.php");
@@ -107,6 +107,9 @@ public class GameActivity extends AppCompatActivity {
 
                                 if (data.equals("Success")) {
                                     String board = br.readLine();
+                                    String challenger = br.readLine();
+                                    String challenged = br.readLine();
+                                    String turn = br.readLine();
                                     Log.d("Board", board);
                                     Intent intent = new Intent(
                                             GameActivity.this,
@@ -114,6 +117,9 @@ public class GameActivity extends AppCompatActivity {
                                     intent.putExtra("myUsername", username);
                                     intent.putExtra("theirUsername", theirUsername);
                                     intent.putExtra("board", board);
+                                    intent.putExtra("challenger", challenger);
+                                    intent.putExtra("challenged", challenged);
+                                    intent.putExtra("turn", turn);
                                     startActivity(intent);
                                 } else if (data.equals("Failed")) {
                                     question.setText("User not found.");
@@ -124,7 +130,9 @@ public class GameActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         } finally {
-
+                            if (connect != null) {
+                                connect.disconnect();
+                            }
                         }
                     }
                 });

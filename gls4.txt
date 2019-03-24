@@ -1,0 +1,189 @@
+commit 391015d6b290a784bdc848a51c545a8e793e1caf
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Fri Mar 15 22:53:59 2019 -0400
+
+    Update README.md
+
+ README.md | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
+
+commit d766f1466481c8cedecae971bd70524b246dd90b
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Fri Mar 15 22:51:10 2019 -0400
+
+    Final commit for now, will fix PHP stuff when remote's back up
+
+ README.md                                          |  36 +++++
+ app/build.gradle                                   |   2 +-
+ app/src/main/AndroidManifest.xml                   |   2 +
+ .../java/com/example/assignment4/GameActivity.java | 135 +++++++++++++++++
+ .../com/example/assignment4/GridViewAdapter.java   |  94 ++++++++++++
+ .../java/com/example/assignment4/MainActivity.java | 168 ++++++++++-----------
+ .../com/example/assignment4/MatchActivity.java     |  44 ++++++
+ app/src/main/res/drawable/black.png                | Bin 0 -> 154 bytes
+ app/src/main/res/drawable/blackpiece.png           | Bin 0 -> 55234 bytes
+ app/src/main/res/drawable/redpiece.png             | Bin 0 -> 89991 bytes
+ app/src/main/res/drawable/white.png                | Bin 0 -> 313 bytes
+ app/src/main/res/layout/activity_game.xml          |  62 ++++++++
+ app/src/main/res/layout/activity_match.xml         |  44 ++++++
+ 13 files changed, 502 insertions(+), 85 deletions(-)
+
+commit 49b11c306eaa8915c66ca3794eabd100ffd223fe
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Thu Mar 14 23:00:00 2019 -0400
+
+    Pivoting - it's a tic tac toe app now. This is too hard
+
+ app/src/main/java/com/example/assignment4/MainActivity.java | 7 +++----
+ app/src/main/res/layout/content_main.xml                    | 8 ++++----
+ app/src/main/res/layout/nav_header_main.xml                 | 2 +-
+ 3 files changed, 8 insertions(+), 9 deletions(-)
+
+commit 6b7e8264578144627280072fbd8673688c88814f
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Wed Mar 13 22:48:13 2019 -0400
+
+    PHP and MYSQL workgit add -A User can log in and create accounts!
+
+ app/src/main/AndroidManifest.xml                   |   1 +
+ .../java/com/example/assignment4/MainActivity.java | 181 ++++++++++++++++++---
+ app/src/main/res/layout/content_main.xml           |  33 ++--
+ app/src/main/res/values/strings.xml                |   3 +-
+ 4 files changed, 183 insertions(+), 35 deletions(-)
+
+commit f749ca1d71860a1c888d7e83a5f111209cbc0994
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Tue Mar 12 23:32:05 2019 -0400
+
+    Reading from php file on server
+
+ app/build.gradle                                   |  1 +
+ app/src/main/AndroidManifest.xml                   |  2 ++
+ .../java/com/example/assignment4/MainActivity.java | 41 +++++++++++++++++++---
+ app/src/main/res/layout/content_main.xml           |  6 ++--
+ build.gradle                                       |  3 +-
+ 5 files changed, 44 insertions(+), 9 deletions(-)
+
+commit c28b9fbea671efc211918b2a7d135c34a2ca08cf
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Mon Mar 11 23:42:57 2019 -0400
+
+    Login screen done
+
+ .../java/com/example/assignment4/MainActivity.java |  9 ---
+ app/src/main/res/layout/app_bar_main.xml           |  8 ---
+ app/src/main/res/layout/content_main.xml           | 82 +++++++++++++++++++---
+ build.gradle                                       |  2 +-
+ 4 files changed, 73 insertions(+), 28 deletions(-)
+
+commit 3342bcd16341996df964888865ae30d3c6c5100a
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Fri Mar 8 23:59:19 2019 -0500
+
+    User/Password stuff
+
+ app/src/main/java/com/example/assignment4/MainActivity.java | 5 ++++-
+ app/src/main/res/layout/content_main.xml                    | 4 ++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+commit 10689a6bafbb6cf5dcd61ba8cf8ffd3a588b8039
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Thu Mar 7 22:59:26 2019 -0500
+
+    Login boxes
+
+ .../java/com/example/assignment4/MainActivity.java |  5 +--
+ app/src/main/res/layout/content_main.xml           | 37 ++++++++++++++++------
+ 2 files changed, 30 insertions(+), 12 deletions(-)
+
+commit f75430cc2fb5a0c86f3dd65f9ee369c69ebe7b1f
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Wed Mar 6 14:19:38 2019 -0500
+
+    Navigation screen is done, waiting on SQL/PHP stuff
+
+ .../java/com/example/assignment4/MainActivity.java | 13 +++++----
+ app/src/main/res/menu/activity_main_drawer.xml     | 34 ++++++++--------------
+ app/src/main/res/values/colors.xml                 |  2 +-
+ 3 files changed, 20 insertions(+), 29 deletions(-)
+
+commit 72c90dd1a329dbd9d138386f540743ea33fa8adb
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Tue Mar 5 23:17:18 2019 -0500
+
+    Changed colors. Not sure if I like them but they're fine for now
+
+ .idea/vcs.xml                                          |   6 ++++++
+ .../java/com/example/assignment4/MainActivity.java     |   1 +
+ app/src/main/res/drawable/side_nav_bar.xml             |   6 +++---
+ app/src/main/res/drawable/wack.png                     | Bin 0 -> 199256 bytes
+ app/src/main/res/drawable/wack2.png                    | Bin 0 -> 81456 bytes
+ app/src/main/res/layout/activity_main.xml              |   2 ++
+ app/src/main/res/layout/app_bar_main.xml               |   2 +-
+ app/src/main/res/layout/content_main.xml               |  12 ++++++++----
+ app/src/main/res/layout/nav_header_main.xml            |   6 +++---
+ app/src/main/res/values/colors.xml                     |   6 ++++++
+ app/src/main/res/values/strings.xml                    |   4 ++--
+ app/src/main/res/values/styles.xml                     |   6 +++---
+ 12 files changed, 35 insertions(+), 16 deletions(-)
+
+commit 85fa47e20decb65d320a26532bf9e3a5a88a9019
+Author: Kyle Franke <kfranke1@binghamton.edu>
+Date:   Mon Mar 4 10:03:31 2019 -0500
+
+    Initial
+
+ .gitignore                                         |  13 ++
+ .idea/codeStyles/Project.xml                       |  29 ++++
+ .idea/gradle.xml                                   |  15 ++
+ .idea/misc.xml                                     |   9 ++
+ .idea/runConfigurations.xml                        |  12 ++
+ README.md                                          |   1 +
+ app/.gitignore                                     |   1 +
+ app/build.gradle                                   |  29 ++++
+ app/proguard-rules.pro                             |  21 +++
+ .../assignment4/ExampleInstrumentedTest.java       |  26 ++++
+ app/src/main/AndroidManifest.xml                   |  24 +++
+ .../java/com/example/assignment4/MainActivity.java | 101 ++++++++++++
+ app/src/main/res/drawable-v21/ic_menu_camera.xml   |  12 ++
+ app/src/main/res/drawable-v21/ic_menu_gallery.xml  |   9 ++
+ app/src/main/res/drawable-v21/ic_menu_manage.xml   |   9 ++
+ app/src/main/res/drawable-v21/ic_menu_send.xml     |   9 ++
+ app/src/main/res/drawable-v21/ic_menu_share.xml    |   9 ++
+ .../main/res/drawable-v21/ic_menu_slideshow.xml    |   9 ++
+ .../res/drawable-v24/ic_launcher_foreground.xml    |  34 ++++
+ .../main/res/drawable/ic_launcher_background.xml   | 170 ++++++++++++++++++++
+ app/src/main/res/drawable/side_nav_bar.xml         |   9 ++
+ app/src/main/res/layout/activity_main.xml          |  25 +++
+ app/src/main/res/layout/app_bar_main.xml           |  33 ++++
+ app/src/main/res/layout/content_main.xml           |  20 +++
+ app/src/main/res/layout/nav_header_main.xml        |  36 +++++
+ app/src/main/res/menu/activity_main_drawer.xml     |  38 +++++
+ app/src/main/res/menu/main.xml                     |   9 ++
+ app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml |   5 +
+ .../res/mipmap-anydpi-v26/ic_launcher_round.xml    |   5 +
+ app/src/main/res/mipmap-hdpi/ic_launcher.png       | Bin 0 -> 2963 bytes
+ app/src/main/res/mipmap-hdpi/ic_launcher_round.png | Bin 0 -> 4905 bytes
+ app/src/main/res/mipmap-mdpi/ic_launcher.png       | Bin 0 -> 2060 bytes
+ app/src/main/res/mipmap-mdpi/ic_launcher_round.png | Bin 0 -> 2783 bytes
+ app/src/main/res/mipmap-xhdpi/ic_launcher.png      | Bin 0 -> 4490 bytes
+ .../main/res/mipmap-xhdpi/ic_launcher_round.png    | Bin 0 -> 6895 bytes
+ app/src/main/res/mipmap-xxhdpi/ic_launcher.png     | Bin 0 -> 6387 bytes
+ .../main/res/mipmap-xxhdpi/ic_launcher_round.png   | Bin 0 -> 10413 bytes
+ app/src/main/res/mipmap-xxxhdpi/ic_launcher.png    | Bin 0 -> 9128 bytes
+ .../main/res/mipmap-xxxhdpi/ic_launcher_round.png  | Bin 0 -> 15132 bytes
+ app/src/main/res/values-v21/styles.xml             |   8 +
+ app/src/main/res/values/colors.xml                 |   6 +
+ app/src/main/res/values/dimens.xml                 |   8 +
+ app/src/main/res/values/drawables.xml              |   8 +
+ app/src/main/res/values/strings.xml                |   9 ++
+ app/src/main/res/values/styles.xml                 |  20 +++
+ .../com/example/assignment4/ExampleUnitTest.java   |  17 ++
+ build.gradle                                       |  27 ++++
+ gradle.properties                                  |  15 ++
+ gradle/wrapper/gradle-wrapper.jar                  | Bin 0 -> 54329 bytes
+ gradle/wrapper/gradle-wrapper.properties           |   6 +
+ gradlew                                            | 172 +++++++++++++++++++++
+ gradlew.bat                                        |  84 ++++++++++
+ settings.gradle                                    |   1 +
+ 53 files changed, 1103 insertions(+)
