@@ -427,4 +427,8 @@ public class GridViewAdapter extends BaseAdapter {
         this.myTurn = myTurn;
         this.isRed = isRed;
     }
+
+    void updateGrid(String[][] lstSource) {
+        this.lstSource = lstSource.clone();
+    }
 }
